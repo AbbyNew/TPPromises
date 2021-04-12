@@ -5,14 +5,14 @@ const res = document.getElementById("result") ;
 // La fonction qui retourne une promesse
 function faireQqc() {
     return new Promise((successCallback, failureCallback) => {
-      console.log("Dans Promise 0");
+      console.log("Dans Promise, dans l'ordre des appels ");
       // réussir une fois sur deux
       var variable = Math.random() ; 
       if (variable > .5) {
-        console.log('Dans Promise Success') ;
+        console.log("Dans Promise Success, dans l'ordre des appels") ;
         successCallback("Réussite : " + variable);
       } else {
-        console.log('Dans Promise Fail') ;
+        console.log("Dans Promise Fail, dans l'ordre des appels") ;
         failureCallback("Échec : " + variable);
       }
     })
@@ -20,13 +20,13 @@ function faireQqc() {
   
 // Fonction appelée en cas de succès   
   function successCallback(resultat) {
-    console.log('Dans success Call') ; 
+    console.log("Dans success Call, mais pas dans l'ordre des appels") ; 
     console.log("L'opération a réussi avec le message : " + resultat);
   }
 
   // Fonction appelée en cas de fail   
-  function failureCallback(erreur) {
-    console.log('Dans failure Call') ; 
+  function failureCallback(erreur) {    
+    console.log("Dans failure Call, mais pas dans l'ordre des appels") ; 
     console.error("L'opération a échoué avec le message : " + erreur);
   }
   
@@ -34,7 +34,7 @@ function faireQqc() {
   initial.addEventListener("click", () =>{
       console.log('Bef SendReponse') ; 
       SendResponse() ; 
-      console.log('Aft SendReponse') ; 
+      console.log('Aft SendReponse. Normalement ce serait ici The End...') ; 
   } ) ;
   
   // Lancement du test au moyen du bouton (on l'a rajouté pour voir commment se passaient les appels asynchrones )
